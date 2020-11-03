@@ -188,109 +188,213 @@
 </head>
 
 <body>
-  <!-- Fixed navbar by Bootstrap: https://getbootstrap.com/examples/navbar-fixed-top/ -->
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-      <ul class="nav navbar-nav left">
-        <li>
-          <a href="index.html">
-            <img class="webaclash-logo-image" src="images/webclash-original.png" width="120px" height="25px">
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <!-- End of navbar -->
-  <div class="container-fluid fill">
-    <div class="row fill">
-      <div class="col-sm-4 fill">
-        <div class="panel panel-default fill">
 
-          <div class="panel-heading" data-toggle="tooltip" style="padding: 0px;">
-            <span id="userInfo"></span>
-            <span id="refreshHubs" class="glyphicon glyphicon-refresh" style="cursor: pointer; display: none" title="Refresh list of files"></span>
-            <span id="signOut" class="glyphicon glyphicon-log-out" style="margin-top:5px;cursor: pointer; float: right; display: none" title="Sign out"> </span>
+
+        <!-- Fixed navbar by Bootstrap: https://getbootstrap.com/examples/navbar-fixed-top/ -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav left">
+              <li>
+                <a href="index.html">
+                  <img class="webaclash-logo-image" src="images/webclash-original.png" width="120px" height="25px">
+                </a>
+              </li>
+            </ul>
           </div>
+        </nav>
+        <!-- End of navbar -->
 
-          <div id="userHubs">
+        <!-- <div> -->
 
-            <div style="padding-top: 100px; text-align: center;">
-              
-              <button class="btn btn-lg btn-default" id="autodeskSigninButton">
-                <!-- <img src="https://github.com/Autodesk-Forge/learn.forge.viewhubmodels/raw/master/img/autodesk_text.png" height="20"> -->
-                 Ingresa a tu cuenta BIM360.
-              </button>
-
-              <br/>
-              <br/>
-              <br/>Probablemente vas a necesitar proveernos también tu<br/> cuenta de BIM 360 Docs para esta App.<br/>
-              <a href="https://forge.autodesk.com/blog/bim-360-docs-provisioning-forge-apps">Learn more</a>.
-            
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-
-
-      <div class="col-sm-8 fill">
-        <div id="forgeViewer"></div>
-      </div>
-
-      <div id="body"> 
+          <nav class="main-menu">
+            <ul>
+                <li>
+                    <a href="http://justinfarrow.com">
+                        <i class="fa fa-home fa-2x"></i>
+                        <span class="nav-text">
+                            Dashboard
+                        </span>
+                    </a>
+                  
+                </li>
+                <li class="has-subnav">
+                    <a href="#">
+                        <i class="fa fa-laptop fa-2x"></i>
+                        <span class="nav-text">
+                            Stars Components
+                        </span>
+                    </a>
+                    
+                </li>
+                <li class="has-subnav">
+                    <a href="#">
+                      <i class="fa fa-list fa-2x"></i>
+                        <span class="nav-text">
+                            Forms
+                        </span>
+                    </a>
+                    
+                </li>
+                <li class="has-subnav">
+                    <a href="#">
+                      <i class="fa fa-folder-open fa-2x"></i>
+                        <span class="nav-text">
+                            Pages
+                        </span>
+                    </a>
+                  
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-bar-chart-o fa-2x"></i>
+                        <span class="nav-text">
+                            Graphs and Statistics
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-font fa-2x"></i>
+                        <span class="nav-text">
+                          Quotes
+                        </span>
+                    </a>
+                </li>
+                <li>
+                  <a href="#">
+                      <i class="fa fa-table fa-2x"></i>
+                        <span class="nav-text">
+                            Tables
+                        </span>
+                    </a>
+                </li>
+                <li>
+                  <a href="#">
+                        <i class="fa fa-map-marker fa-2x"></i>
+                        <span class="nav-text">
+                            Maps
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                      <i class="fa fa-info fa-2x"></i>
+                        <span class="nav-text">
+                            Documentation
+                        </span>
+                    </a>
+                </li>
+            </ul>
   
-        <div id="chat-circle" class="btn btn-raised">
-                <div id="chat-overlay"></div>
-                <i class="material-icons">speaker_phone</i>
-        </div>
- <!-- ------------------------------------------------------------- -->
-          <div class="chat-box">
-
-            <div class="chat-box-header">
-              Whatsapp number
-              <span class="chat-box-toggle"><i class="material-icons">close</i></span>
-            </div>
-<!-- ------------------------------------------------------------- -->
-            <div class="chat-box-body">
-
-              <div class="chat-box-overlay">   
+            <ul class="logout">
+                <li>
+                  <a href="#">
+                        <i class="fa fa-power-off fa-2x"></i>
+                        <span class="nav-text">
+                            Logout
+                        </span>
+                    </a>
+                </li>  
+            </ul>
+          </nav>
+  
+          <div class="container-fluid fill">
+            <div class="row fill">
+  
+  
+              <div id="cuadro" class="col-sm-4 fill">
+                <div class="panel panel-default fill">
+    
+                  <div class="panel-heading" data-toggle="tooltip" style="padding: 0px;">
+                    <span id="userInfo"></span>
+                    <span id="refreshHubs" class="glyphicon glyphicon-refresh" style="cursor: pointer; display: none" title="Refresh list of files"></span>
+                    <span id="signOut" class="glyphicon glyphicon-log-out" style="margin-top:5px;cursor: pointer; float: right; display: none" title="Sign out"> </span>
+                  </div>
+    
+                  <div id="userHubs">
+    
+                    <div style="padding-top: 100px; text-align: center;">
+                      
+                      <button class="btn btn-lg btn-default" id="autodeskSigninButton">
+                        <!-- <img src="https://github.com/Autodesk-Forge/learn.forge.viewhubmodels/raw/master/img/autodesk_text.png" height="20"> -->
+                        Ingresa a tu cuenta BIM360.
+                      </button>
+    
+                      <br/>
+                      <br/>
+                      <br/>Probablemente vas a necesitar proveernos también tu<br/> cuenta de BIM 360 Docs para esta App.<br/>
+                      <a href="https://forge.autodesk.com/blog/bim-360-docs-provisioning-forge-apps">Learn more</a>.
+                    
+                    </div>
+    
+                  </div>
+    
+                </div>
               </div>
-
-              <div class="chat-logs">
-              </div><!--chat-log -->
-
+    
+    
+              <div class="col-sm-8 fill">
+                <div id="forgeViewer"></div>
+              </div>
+    
+              <div id="body"> 
+          
+                <div id="chat-circle" class="btn btn-raised">
+                        <div id="chat-overlay"></div>
+                        <i class="material-icons">speaker_phone</i>
+                </div>
+        <!-- ------------------------------------------------------------- -->
+                  <div class="chat-box">
+    
+                    <div class="chat-box-header">
+                      Whatsapp number
+                      <span class="chat-box-toggle"><i class="material-icons">close</i></span>
+                    </div>
+        <!-- ------------------------------------------------------------- -->
+                    <div class="chat-box-body">
+    
+                      <div class="chat-box-overlay">   
+                      </div>
+    
+                      <div class="chat-logs">
+                      </div><!--chat-log -->
+    
+                    </div>
+        <!-- ------------------------------------------------------- -->
+                    <div class="chat-input">    
+    
+                        <form>
+    
+                          <input type="text" id="chat-input" placeholder="Send a message..." />
+                          <button type="submit" class="chat-submit" id="chat-submit">
+                            <i class="material-icons">send</i>
+                          </button>
+    
+                        </form>   
+    
+                    </div>
+    
+                  </div>
+                  
+                  
+                  
+                  
+              </div>
+    
+    
             </div>
-<!-- ------------------------------------------------------- -->
-            <div class="chat-input">    
-
-                <form>
-
-                  <input type="text" id="chat-input" placeholder="Send a message..." />
-                  <button type="submit" class="chat-submit" id="chat-submit">
-                    <i class="material-icons">send</i>
-                  </button>
-
-                </form>   
-
-            </div>
-
           </div>
-          
-          
-          
-          
-        </div>
+
+        <!-- </div> -->
 
 
-    </div>
-  </div>
-  
+
+
 </body>
-<footer>
+<!-- <footer>
   Powered by Dynoscript
 </footer>
-<iframe id="hiddenFrame" style="visibility: hidden; display:none" />
+<iframe id="hiddenFrame" style="visibility: hidden; display:none" /> -->
 
 
 </html>
