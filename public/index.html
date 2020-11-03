@@ -42,12 +42,148 @@
   <script src="js/Dashboard/Dashboard.js"></script>
   <script src="js/Dashboard/DashboardPanel.js"></script>
 
+  <script src="/js/myawesomeextension.js"></script>
+  <script src="/js/handleselectionextension.js"></script>
+  <script src="/js/ScreenShotManager/contents/main.js"></script>
+  <script src="/js/TransformationExtension/contents/main.js"></script>
+  <script src="/js/TransformationExtension/contents/main.css"></script>
+  <script src="/js/CameraRotation/contents/main.js"></script>
+  <script src="/js/CameraRotation/contents/main.css"></script>
+  <script src="js/whatsapp.js"></script>
+
+  <link rel="stylesheet" href="http://cdn.jsdelivr.net/gh/autodesk-forge/forge-extensions/public/extensions/NestedViewerExtension/contents/main.css">
+  <script src="http://cdn.jsdelivr.net/gh/autodesk-forge/forge-extensions/public/extensions/NestedViewerExtension/contents/main.js"></script>
+
+  <link rel="stylesheet" href="http://cdn.jsdelivr.net/gh/autodesk-forge/forge-extensions/public/extensions/transform/contents/main.css">
+  <script src="http://cdn.jsdelivr.net/gh/autodesk-forge/forge-extensions/public/extensions/transform/contents/main.js"></script>
+
+  <link rel="stylesheet" href="http://cdn.jsdelivr.net/gh/autodesk-forge/forge-extensions/public/extensions/DrawToolExtension/contents/main.css">
+  <script src="https://github.com/petrbroz/ForgeViewerExtensions/blob/master/assets/js/extensions/TransformTool.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script src="https://use.fontawesome.com/1c6f725ec5.js"></script>
+
+
   <!--Chart JS  packages-->
   <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" ></script>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" />
 
   <script src="js/Dashboard/PanelBarChart.js"></script>
   <script src="js/Dashboard/PanelPieChart.js"></script>
+  
+  <script src="../wp-sendMessage.js" type="text/javascript"></script>
+
+  <script type="text/javascript">
+    // Cat box by //https://codepen.io/shivapandey/pen/dWdRYM
+      $(function() {
+        var INDEX = 0; 
+        $("#chat-submit").click(function(e) {
+          e.preventDefault();
+          var msg = $("#chat-input").val(); 
+          if(msg.trim() == ''){
+            return false;
+          }
+          generate_message(msg, 'self');
+          var buttons = [
+              {
+                name: 'Existing User',
+                value: 'existing'
+              },
+              {
+                name: 'New User',
+                value: 'new'
+              }
+            ];
+          setTimeout(function() {      
+            generate_message('Your message was sent successfully!', 'user');  
+          }, 1000)
+          send_wp(msg);
+        })
+
+        function send_wp(msg) {
+          console.log(msg)
+
+
+        }
+
+        function generate_message(msg, type) {
+          INDEX++;
+          var str="";
+          str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg "+type+"\">";
+          str += "          <span class=\"msg-avatar\">";
+          str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
+          str += "          <\/span>";
+          str += "          <div class=\"cm-msg-text\">";
+          str += msg;
+          str += "          <\/div>";
+          str += "        <\/div>";
+          $(".chat-logs").append(str);
+          $("#cm-msg-"+INDEX).hide().fadeIn(300);
+          if(type == 'self'){
+          $("#chat-input").val(''); 
+          }    
+          $(".chat-logs").stop().animate({ scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);    
+        }  
+        
+        function generate_button_message(msg, buttons){    
+          /* Buttons should be object array 
+            [
+              {
+                name: 'Existing User',
+                value: 'existing'
+              },
+              {
+                name: 'New User',
+                value: 'new'
+              }
+            ]
+          */
+          INDEX++;
+          var btn_obj = buttons.map(function(button) {
+            return  "              <li class=\"button\"><a href=\"javascript:;\" class=\"btn btn-primary chat-btn\" chat-value=\""+button.value+"\">"+button.name+"<\/a><\/li>";
+          }).join('');
+          var str="";
+          str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg user\">";
+          str += "          <span class=\"msg-avatar\">";
+          str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
+          str += "          <\/span>";
+          str += "          <div class=\"cm-msg-text\">";
+          str += msg;
+          str += "          <\/div>";
+          str += "          <div class=\"cm-msg-button\">";
+          str += "            <ul>";   
+          str += btn_obj;
+          str += "            <\/ul>";
+          str += "          <\/div>";
+          str += "        <\/div>";
+          $(".chat-logs").append(str);
+          $("#cm-msg-"+INDEX).hide().fadeIn(300);   
+          $(".chat-logs").stop().animate({ scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);
+          $("#chat-input").attr("disabled", true);
+        }
+        
+        $(document).delegate(".chat-btn", "click", function() {
+          var value = $(this).attr("chat-value");
+          var name = $(this).html();
+          $("#chat-input").attr("disabled", false);
+          generate_message(name, 'self');
+        })
+        
+        $("#chat-circle").click(function() {    
+          $("#chat-circle").toggle('scale');
+          $(".chat-box").toggle('scale');
+
+        })
+        
+        $(".chat-box-toggle").click(function() {
+          $("#chat-circle").toggle('scale');
+          $(".chat-box").toggle('scale');
+        })
+
+        
+      })
+
+  </script>
   
 </head>
 
@@ -57,8 +193,8 @@
     <div class="container-fluid">
       <ul class="nav navbar-nav left">
         <li>
-          <a href="https://media-exp1.licdn.com//" target="_blank">
-            <img alt="Dynoscript" src="https://media-exp1.licdn.com/dms/image/C4E0BAQEdGtNGVKWP6A/company-logo_200_200/0?e=2159024400&v=beta&t=JpH0GMZed3I5uyTzgkTzGupYFYFTiJR39y7Ml1dVIE4" height="25">
+          <a href="index.html">
+            <img class="webaclash-logo-image" src="images/webclash-original.png" width="120px" height="25px">
           </a>
         </li>
       </ul>
@@ -102,9 +238,54 @@
         <div id="forgeViewer"></div>
       </div>
 
+      <div id="body"> 
+  
+        <div id="chat-circle" class="btn btn-raised">
+                <div id="chat-overlay"></div>
+                <i class="material-icons">speaker_phone</i>
+        </div>
+ <!-- ------------------------------------------------------------- -->
+          <div class="chat-box">
+
+            <div class="chat-box-header">
+              Whatsapp number
+              <span class="chat-box-toggle"><i class="material-icons">close</i></span>
+            </div>
+<!-- ------------------------------------------------------------- -->
+            <div class="chat-box-body">
+
+              <div class="chat-box-overlay">   
+              </div>
+
+              <div class="chat-logs">
+              </div><!--chat-log -->
+
+            </div>
+<!-- ------------------------------------------------------- -->
+            <div class="chat-input">    
+
+                <form>
+
+                  <input type="text" id="chat-input" placeholder="Send a message..." />
+                  <button type="submit" class="chat-submit" id="chat-submit">
+                    <i class="material-icons">send</i>
+                  </button>
+
+                </form>   
+
+            </div>
+
+          </div>
+          
+          
+          
+          
+        </div>
+
 
     </div>
   </div>
+  
 </body>
 <footer>
   Powered by Dynoscript
