@@ -13,6 +13,12 @@ html, body{
     margin-right: 30px;
   }
 
+  #appBuckets {
+    overflow: auto;
+    width: 100%;
+    height: calc(100vh - 150px);
+  }
+
   #cuadro {
     margin-left: 0px;
   }
