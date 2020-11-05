@@ -20,6 +20,7 @@ app.use(express.json({ limit: '800mb' }));
 app.use('/api/forge', require('./routes/oauth'));
 app.use('/api/forge', require('./routes/datamanagement'));
 app.use('/api/forge', require('./routes/user'));
+
 app.use('/api/forge/oauth', require('./routes/basic-viewer/oauth'));
 app.use('/api/forge/oss', require('./routes/oss'));
 app.use('/api/forge/modelderivative', require('./routes/modelderivative'));

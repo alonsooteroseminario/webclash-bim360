@@ -7,7 +7,7 @@ const {
     JobSvfOutputPayload
 } = require('forge-apis');
 
-const { getClient, getInternalToken } = require('./common/oauth');
+const { getClient, getInternalToken } = require('./common/basic-viewer/oauth');
 
 let router = express.Router();
 
