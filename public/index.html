@@ -4,7 +4,7 @@
 <head>
   <meta name="description" content="Coordinate your job">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <title>Webclash Viewer | Coordinate your job</title>
+  <title>Webclash Viewer</title>
   <meta charset="utf-8" />
   <link rel="shortcut icon" href="https://static.wixstatic.com/media/5838f5_91e74a939fa54cfaa24f53a5fa112499%7Emv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/5838f5_91e74a939fa54cfaa24f53a5fa112499%7Emv2.png">
   
@@ -191,7 +191,7 @@
 
 
         <!-- Fixed navbar by Bootstrap: https://getbootstrap.com/examples/navbar-fixed-top/ -->
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <!-- <nav class="navbar navbar-default navbar-fixed-top">
           <div class="container-fluid">
             <ul class="nav navbar-nav left">
               <li>
@@ -211,8 +211,71 @@
               </li>
             </ul>
           </div>
-        </nav>
+        </nav> -->
         <!-- End of navbar -->
+
+        <script>
+              // menu
+              const navbar = document.querySelector('.md-header .nav-bar');
+              const shadow = document.querySelector('.md-header .nav-mobile-shadow');
+              const mdHeader = document.querySelector('.md-header');
+
+              navbar.addEventListener('click', function () {  
+                mdHeader.classList.add('active');
+              });
+
+              shadow.addEventListener('click', function () {
+                mdHeader.classList.remove('active');
+              });
+
+              // search bar
+              const searchIcon = document.querySelector('.md-search-bar .material-icons.search-icon');
+              const closeSearch = document.querySelector('.md-search-bar .md-search-bar-input .material-icons');
+
+              searchIcon.addEventListener('click', function () {
+                this.parentElement.classList.add('focus');
+              });
+
+              closeSearch.addEventListener('click', function () {
+                this.parentElement.parentElement.classList.remove('focus');
+              });
+        </script>
+
+        <div class="nav-left">
+
+          <div class="nav-bar">
+            
+          </div>
+
+        </div>
+        <div class="nav-right">
+
+          <div class="brand">
+            <a>
+              <img class="webaclash-logo-image" src="images/webclash-original.png" width="120px" height="25px">
+            </a>
+          </div>
+
+        </div>
+
+        <nav class="nav-mobile">
+          <ul class="nav-mobile-list">
+
+            <li>
+              <a href="index.html">
+                BIM 360
+              </a>
+            </li>
+            <li>
+              <a href="https://webclash-viewer.herokuapp.com/">
+                 Upload File
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+        <div class="div nav-mobile-shadow"></div>
+
 
         <!-- <div> -->
 
@@ -402,10 +465,11 @@
 
 
 </body>
-<!-- <footer>
+
+<footer>
   Powered by Dynoscript
 </footer>
-<iframe id="hiddenFrame" style="visibility: hidden; display:none" /> -->
+<iframe id="hiddenFrame" style="visibility: hidden; display:none" />
 
 
 </html>
